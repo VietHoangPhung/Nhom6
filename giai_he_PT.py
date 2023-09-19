@@ -4,8 +4,8 @@ import numpy as np
 
 def input_matrix():
     try:
-        sohang = int(input("Nhập số hàng: "))
-        socot = int(input("Nhập số cột: "))
+        sohang = socot =int(input("Nhập số hàng: "))
+        #socot = int(input("Nhập số cột: "))
         matrix = np.zeros((sohang, socot))
 
         for i in range(sohang):
@@ -46,7 +46,10 @@ if D is not None:
     print(D)
 C1=C
 D1=D
-X1 = np.linalg.solve(C1,D1)
-print('Nghiem cua he:',X1)
+try:
+    X1 = np.linalg.solve(C1,D1)
+    print('Nghiem cua he:',X1)
+except:
+    print("Phuong trinh vo nghiem")
 
 
