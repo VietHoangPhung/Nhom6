@@ -8,7 +8,7 @@ A1  = np.linalg.inv(A) # tạo ma trận nghich đảo
 print(A)
 print(B)
 print(A1)
-X = np.dot(A1,B)
+X = np.linalg.solve(A,B)
 print('Nghiem cua he:',X)
 print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
 print('bbbbbbbbbbbbbbbbbbbbbbb')
