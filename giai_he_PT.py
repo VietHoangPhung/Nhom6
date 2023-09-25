@@ -54,12 +54,12 @@ def hide_attached_labels():
 def validate_input(entry):
     try:
         num_equations = int(entry.get())
-        if num_equations <= 0:
-            raise ValueError("Số phương trình phải là số nguyên dương.")
+        if num_equations <= 0 or num_equations > 10:
+            raise ValueError("Nhập lại số phương trình hợp lệ.")
         return True
 
-    except ValueError as e:
-        messagebox.showerror("Error", str(e))
+    except ValueError:
+        messagebox.showerror("Error", "Nhập lại số phương trình hợp lệ.")
         return False
 
 # Reset dữ liệu hiện tại
@@ -67,7 +67,7 @@ def validate_input(entry):
 
 def reset(entry):
     entry.delete(0, tk.END)
-    entry.insert(0, "0")
+    entry.insert(0, "")
     delete_fields()
     result.delete(1.0, tk.END)
     hide_attached_labels()
@@ -107,7 +107,7 @@ def solve(entry):
 # Tạo cửa sổ giao diện
 window = tk.Tk()
 window.title("Giải hệ phương trình tuyến tính")
-window.geometry("1920x400")
+window.geometry("1920x1080")
 
 equation_entries_list = []
 attached_labels = []  # Danh sách để lưu trữ các label đính kèm
