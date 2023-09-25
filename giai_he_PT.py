@@ -1,5 +1,6 @@
 import tkinter as tk
 import numpy as np
+import pandas as pd
 from tkinter import messagebox
 
 # Hàm tạo hệ các phương trình
@@ -142,3 +143,9 @@ result = tk.Text(window, height=5, width=40)
 result.grid(row=2, column=1, pady=10)
 
 window.mainloop()
+# Đọc dữ liệu từ file Excel
+file_path = 'c:\Users\Hoai Nam\OneDrive\Documents\TheChat\Book1.xlsx'  # Thay đổi đường dẫn đến file Excel của bạn
+df = pd.read_excel(file_path)
+
+# Trích xuất dữ liệu thành mảng numpy
+data_array = df.values
