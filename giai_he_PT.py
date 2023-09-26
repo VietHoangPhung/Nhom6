@@ -143,3 +143,12 @@ result = tk.Text(window, height=5, width=40)
 result.grid(row=2, column=1, pady=10)
 
 window.mainloop()
+#Đọc dữ liệu từ file excel
+file_mau = pd.read_excel (r'C:\Users\Hoai Nam\OneDrive\Documents\TheChat\123.xlxs') 
+
+print(file_mau) #IN RA MÀN HÌNH DỮ LIỆU CỦA FILE
+
+file_mau.head() #IN RA MÀN HÌNH HÀNG ĐẦU TIÊN TRONG FILE
+
+file_mau.shape #IN RA THÔNG TIN SỐ LƯỢNG HÀNG, CỘT CỦA BẢNG
+
