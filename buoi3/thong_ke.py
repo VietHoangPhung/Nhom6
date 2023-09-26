@@ -111,8 +111,11 @@ def TBC_A():
     tongA = np.sum(diemA)
     soLop = len(in_data[:, 0])
     avg = tongA/soLop
+    avgArr = np.zeros(1, soLop)
+    for i in range(soLop):
+        avgArr[i] = avg
     plt.plot(range(len(diemA)),diemA,'r-',label="Diem A")
-    plt.plot(range(len(diemA)),avg,'-',label="TB diem A")
+    plt.plot(range(len(diemA)),avgArr,'-',label="TB diem A")
     plt.xlabel('Lơp')
     plt.ylabel(' So sv dat diem A')
     plt.legend(loc='upper right')
