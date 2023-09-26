@@ -15,7 +15,17 @@ maxa = diemA.max()
 i = np.where(diemA == maxa)
 print('lop co nhieu diem A la {0} co {1} sv dat diem A'.format(in_data[i,0],maxa))
 
+def percentFailure (array, tongSV):
+    sum = np.sum(array)
+    average = (sum / tongSV) * 100
+    return average
 
+# Hàm in ra lớp có nhiều sinh viên giỏi nhất
+def bestLevel (array1, array2):
+    arrayGood = np.add(array1, array2)
+    max = np.max(arrayGood)
+    i, = np.where(arrayGood == max)
+    print('Lớp có nhiều học giỏi nhất là {0} có {1} sinh viên'.format(in_data[i,0],max))
 
 
 def diemcaonhatcuatunglop( a):
