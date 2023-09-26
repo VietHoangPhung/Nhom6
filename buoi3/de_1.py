@@ -62,6 +62,5 @@ label2  = Label(w)
 label3 = Label(w)
 label4 = Label(w)
 label5 = Label(w)
-                  
 
 
