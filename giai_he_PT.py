@@ -1,3 +1,4 @@
+#hjjjj
 import tkinter as tk
 import numpy as np
 import pandas as pd
@@ -143,9 +144,21 @@ result = tk.Text(window, height=5, width=40)
 result.grid(row=2, column=1, pady=10)
 
 window.mainloop()
+<<<<<<< HEAD
 # Đọc dữ liệu từ file Excel
 file_path = 'c:\Users\Hoai Nam\OneDrive\Documents\TheChat\Book1.xlsx'  # Thay đổi đường dẫn đến file Excel của bạn
 df = pd.read_excel(file_path)
 
 # Trích xuất dữ liệu thành mảng numpy
 data_array = df.values
+=======
+#Đọc dữ liệu từ file excel
+file_mau = pd.read_excel (r'C:\Users\Hoai Nam\OneDrive\Documents\TheChat\123.xlxs') 
+
+print(file_mau) #IN RA MÀN HÌNH DỮ LIỆU CỦA FILE
+
+file_mau.head() #IN RA MÀN HÌNH HÀNG ĐẦU TIÊN TRONG FILE
+
+file_mau.shape #IN RA THÔNG TIN SỐ LƯỢNG HÀNG, CỘT CỦA BẢNG
+
+>>>>>>> edc4f12d2ebdd18a5ad918be2f197ebc1ac99279
