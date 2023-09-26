@@ -95,3 +95,17 @@ def diemthapnhatcuatunglop( a):
 chonlopthapnhat=int(input("nhap stt lop muon chon: "))
 diemthapnhatcuatunglop(chonlopthapnhat)  
 
+#Vẽ đồ thị so sánh số sinh viên điểm A mỗi lớp so với trung bình số sinh viên đạt điểm A 
+def TBC_A():
+    diemA = in_data[:, 3]
+    tongA = np.sum(diemA)
+    soLop = len(in_data[:, 0])
+    avg = tongA/soLop
+    plt.plot(range(len(diemA)),diemA,'r-',label="Diem A")
+    plt.plot(range(len(diemA)),avg,'-',label="TB diem A")
+    plt.xlabel('Lơp')
+    plt.ylabel(' So sv dat diem A')
+    plt.legend(loc='upper right')
+    plt.show()
+     
+
