@@ -1,12 +1,9 @@
-#hjjjj
 import tkinter as tk
 import numpy as np
 import pandas as pd
 from tkinter import messagebox
 
 # Hàm tạo hệ các phương trình
-
-
 def create(entry):
     result.delete(1.0, tk.END)
     delete_fields()
@@ -30,8 +27,6 @@ def create(entry):
         equation_entries_list.append(equation_entries)
 
 # Hàm xóa các hệ phương trình
-
-
 def delete_fields():
     for entry_list in equation_entries_list:
         for entry in entry_list:
@@ -42,8 +37,6 @@ def delete_fields():
     hide_attached_labels()  # Ẩn các label đính kèm
 
 # Hàm xóa nhãn của từng phương trình tạo ra
-
-
 def hide_attached_labels():
     for label in attached_labels:
         label.grid_forget()
@@ -51,8 +44,6 @@ def hide_attached_labels():
     attached_labels.clear()
 
 # Kiểm tra dữ liệu hợp lệ
-
-
 def validate_input(entry):
     try:
         num_equations = int(entry.get())
@@ -65,8 +56,6 @@ def validate_input(entry):
         return False
 
 # Reset dữ liệu hiện tại
-
-
 def reset(entry):
     entry.delete(0, tk.END)
     entry.insert(0, "")
@@ -75,8 +64,6 @@ def reset(entry):
     hide_attached_labels()
 
 # Giải hệ phương trình vừa tạo
-
-
 def solve(entry):
     try:
         coefficients = []
@@ -152,10 +139,7 @@ df = pd.read_excel(file_path)
 data_array = df.values
 #Đọc dữ liệu từ file excel
 file_mau = pd.read_excel (r'C:\Users\Hoai Nam\OneDrive\Documents\TheChat\123.xlxs') 
-
 print(file_mau) #IN RA MÀN HÌNH DỮ LIỆU CỦA FILE
-
 file_mau.head() #IN RA MÀN HÌNH HÀNG ĐẦU TIÊN TRONG FILE
-
 file_mau.shape #IN RA THÔNG TIN SỐ LƯỢNG HÀNG, CỘT CỦA BẢNG
 
