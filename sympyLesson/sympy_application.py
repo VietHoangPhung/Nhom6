@@ -1,7 +1,14 @@
 import sympy as sym
 import tkinter as tk
 from tkinter import messagebox
-
+from sympy import*
+def solve1():
+    x, y, z= symbols(' x y z')
+    f=1/(x**2-9)
+    x0=3
+    gioihan= Limit(f, x,x0,'-')
+    text= '%s=%s'%(latex(gioihan), latex(gioihan.doit()))
+    print(text)
 def is_f_greater_than_zero(f_expr, lower_limit, upper_limit):
     # Biến x là biến của hàm số
     x = sym.symbols('x')
