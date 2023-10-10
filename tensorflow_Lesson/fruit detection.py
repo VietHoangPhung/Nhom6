@@ -2,17 +2,16 @@ import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk, ImageOps
 import numpy as np
-import cv2
 import matplotlib.pyplot as plt
 import csv
 
 import tensorflow.keras
 
 # Load the model
-model = tensorflow.keras.models.load_model('keras_model.h5', compile=False)
+model = tensorflow.keras.models.load_model('./tensorflow_Lesson/keras_model.h5', compile=False)
 
 # Load the labels
-with open('labels.txt', 'r') as f:
+with open('./tensorflow_Lesson/labels.txt', 'r') as f:
     class_name = f.read().split('\n')
 
 # Create the array of the right shape to feed into the keras model
@@ -46,11 +45,6 @@ def predict_image():
         top_prediction_index = np.argmax(predictions)
         top_prediction_value = predictions[0, top_prediction_index]
         top_class_name = class_name[top_prediction_index]
-
-        # Display the image with the predicted class name
-        image = cv2.cvtColor(image_array, cv2.COLOR_BGR2RGB)
-        image = Image.fromarray(image)
-        image.thumbnail((400, 400))  # Resize image for display
 
         # Update the image on the GUI
         image_label.configure(image=ImageTk.PhotoImage(image))
