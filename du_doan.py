@@ -11,11 +11,13 @@ tf.disable_v2_behavior()
 x = array(df.iloc[:900,:5])
 y = array(df.iloc[:900,5:6])
 '''
-
+df=pd.read_csv('Student_Performance.csv')
+x = array(df.iloc[:900,2])
+y = array(df.iloc[:900,5:6])
 df = pd.read_csv('Student_Performance.csv')
 
-x = array(df.iloc[:900, 0])
-y = array(df.iloc[:900, 5:6])
+#x = array(df.iloc[:900, 0])
+#y = array(df.iloc[:900, 5:6])
 
 # Tạo tâp giá trị x và y
 # x = np.linspace(0, 50, 50)
