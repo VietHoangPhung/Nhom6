@@ -2,11 +2,15 @@ import cv2
 import tkinter as tk
 from tkinter import ttk
 
-def zoom_in():
-    global scale_factor
-    scale_factor += 0.1
-    update_images()
-
+def zoom_image():
+    global scale_factor_x, scale_factor_y
+    try:
+        scale_factor_x = float(scale_factor_x_entry.get())
+        scale_factor_y = float(scale_factor_y_entry.get())
+        update_images()
+    except Exception as e:
+        # Xử lý ngoại lệ nếu người dùng nhập không phải là số
+        messagebox.showerror("Error", e)
 def zoom_out():
     global scale_factor
     scale_factor -= 0.1
