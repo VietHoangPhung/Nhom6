@@ -35,7 +35,7 @@ def update_images():
     cv2.imshow('Zoomed and Rotated Image', rotated_img)
 
 # Đọc ảnh
-original_image = cv2.imread('R.jpg')
+original_image = cv2.imread('img.jpg')
 
 # Tạo cửa sổ tkinter
 root = tk.Tk()
