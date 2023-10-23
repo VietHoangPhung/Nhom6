@@ -63,6 +63,18 @@ def open_image():
 def update_images(image1, image2):
     cv2.imshow('Image 1', image1)
     cv2.imshow('Image 2', image2)
+def apply_edge_detection():
+    global original_image, threshold1, threshold2
+    if original_image is not None:
+        if not threshold1_entry.get() or not threshold2_entry.get():
+            return
+
+        threshold1 = int(threshold1_entry.get())
+        threshold2 = int(threshold2_entry.get())
+
+        edges = cv2.Canny(original_image, threshold1, threshold2)
+        update_images(original_image, edges)
+
 
 # Tạo cửa sổ tkinter
 root = tk.Tk()
@@ -73,5 +85,51 @@ open_image_button = ttk.Button(root, text="Open Image", command=open_image)
 open_image_button.pack()
 
 # Tạo Entry Widgets cho hai ngưỡng
+# Create Entry Widgets for the thresholds
 threshold1_label = ttk.Label(root, text="Threshold 1:")
-threshold1_label.pack(
+threshold1_label.pack()
+
+threshold1_entry = ttk.Entry(root)
+threshold1_entry.pack()
+
+threshold2_label = ttk.Label(root, text="Threshold 2:")
+threshold2_label.pack()
+
+threshold2_entry = ttk.Entry(root)
+threshold2_entry.pack()
+
+# Create buttons to apply edge detection, zoom image, and rotate image
+apply_edge_detection_button = ttk.Button(root, text="Apply Edge Detection", command=apply_edge_detection)
+apply_edge_detection_button.pack()
+
+zoom_image_button = ttk.Button(root, text="Zoom Image", command=zoom_image)
+zoom_image_button.pack()
+
+rotate_image_button = ttk.Button(root, text="Rotate Image", command=rotate_image)
+rotate_image_button.pack()
+
+# Create Entry Widgets for scaling factors and rotation angle
+scale_factor_x_label = ttk.Label(root, text="Scale Factor X:")
+scale_factor_x_label.pack()
+
+scale_factor_x_entry = ttk.Entry(root)
+scale_factor_x_entry.pack()
+
+scale_factor_y_label = ttk.Label(root, text="Scale Factor Y:")
+scale_factor_y_label.pack()
+
+scale_factor_y_entry = ttk.Entry(root)
+scale_factor_y_entry.pack()
+
+rotation_angle_label = ttk.Label(root, text="Rotation Angle (degrees):")
+rotation_angle_label.pack()
+
+rotation_angle_entry = ttk.Entry(root)
+rotation_angle_entry.pack()
+
+# Create a button to normalize images
+normalize_images_button = ttk.Button(root, text="Normalize Images", command=normalize_images)
+normalize_images_button.pack()
+
+# Start the tkinter main loop
+root.mainloop()
