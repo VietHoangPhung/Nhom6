@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import ttk, filedialog
-
 import cv2
 
 def zoom_image():
@@ -16,6 +15,30 @@ def zoom_image():
                                 interpolation=cv2.INTER_LINEAR)
         update_images(zoomed_img, zoomed_img)
 
+
+def normalize_images():
+    global rgb_image, gray_image
+    # Chuẩn hóa ảnh màu RGB
+    normalized_rgb_image = cv2.normalize(rgb_image, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+    # Chuẩn hóa ảnh mức xám
+    normalized_gray_image = cv2.normalize(gray_image, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+
+    # Hiển thị ảnh gốc và ảnh sau chuẩn hóa
+    cv2.imshow('Original RGB Image', rgb_image)
+    cv2.imshow('Normalized RGB Image', normalized_rgb_image)
+    cv2.imshow('Original Gray Image', gray_image)
+    cv2.imshow('Normalized Gray Image', normalized_gray_image)
+def apply_edge_detection():
+    global original_image, threshold1, threshold2
+    if original_image is not None:
+        if not threshold1_entry.get() or not threshold2_entry.get():
+            return
+
+        threshold1 = int(threshold1_entry.get())
+        threshold2 = int(threshold2_entry.get())
+
+        edges = cv2.Canny(original_image, threshold1, threshold2)
+        update_images(original_image, edges)
 
 def rotate_image():
     global original_image, rotation_angle
@@ -52,6 +75,14 @@ root.title("Image Processing")
 # Tạo nút nhấn để chọn ảnh
 open_image_button = ttk.Button(root, text="Open Image", command=open_image)
 open_image_button.pack()
+
+# Create buttons to apply edge detection, zoom image, and rotate image
+apply_edge_detection_button = ttk.Button(root, text="Apply Edge Detection", command=apply_edge_detection)
+apply_edge_detection_button.pack()
+
+# Create a button to normalize images
+normalize_images_button = ttk.Button(root, text="Normalize Images", command=normalize_images)
+normalize_images_button.pack()
 
 # Tạo Entry Widgets cho hai ngưỡng
 threshold1_label = ttk.Label(root, text="Threshold 1:")
