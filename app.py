@@ -3,17 +3,14 @@ from tkinter import ttk, filedialog
 import cv2
 
 def zoom_image():
-    global original_image, scale_factor_x, scale_factor_y
-    if original_image is not None:
-        if not scale_factor_x_entry.get() or not scale_factor_y_entry.get():
-            return
-
+    global scale_factor_x, scale_factor_y
+    try:
         scale_factor_x = float(scale_factor_x_entry.get())
         scale_factor_y = float(scale_factor_y_entry.get())
-
-        zoomed_img = cv2.resize(original_image, None, fx=scale_factor_x, fy=scale_factor_y,
-                                interpolation=cv2.INTER_LINEAR)
-        update_images(zoomed_img, zoomed_img)
+        update_images()
+    except ValueError:
+        # Xử lý ngoại lệ nếu người dùng nhập không phải là số
+        pass
 
 
 def normalize_images():
