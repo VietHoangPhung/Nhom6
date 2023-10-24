@@ -130,5 +130,16 @@ rotation_angle = 0.0
 rgb_image = None
 gray_image = None
 
+# Chuyển ảnh màu sang ảnh mức xám
+gray_image = cv2.cvtColor(rgb_image, cv2.COLOR_BGR2GRAY)
+
+# Tạo cửa sổ tkinter
+root = tk.Tk()
+root.title("Image Normalization")
+
+# Tạo nút nhấn để chuẩn hóa ảnh
+normalize_button = ttk.Button(root, text="Normalize Images", command=normalize_images)
+normalize_button.pack()
+
 root.mainloop()
 cv2.destroyAllWindows()
