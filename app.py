@@ -82,36 +82,22 @@ def update_images(image1, image2):
 def apply_blur():
     global original_image
     if original_image is not None:
-        # Tạo một bản sao độc lập của original_image để không ảnh hưởng đến original_image
         blurred_image = original_image.copy()
 
-        # Lấy vùng được chọn từ ảnh gốc
         x, y, w, h = cv2.selectROI(
             "Select ROI", original_image, fromCenter=False, showCrosshair=True)
-        # Kiểm tra xem vùng được chọn có đủ lớn để áp dụng kernel Gaussian không
+
         if w > 0 and h > 0:
             roi = original_image[y:y+h, x:x+w]
-
-            # Tạo một bản sao độc lập của vùng được chọn để không ảnh hưởng đến original_image
             roi_copy = roi.copy()
-
-            # Áp dụng độ mờ lên vùng đã chọn
             blur_value = int(blur_slider.get())
-            # Giảm kích thước của kernel nếu nó lớn hơn hoặc bằng kích thước nhỏ nhất của vùng chọn
             blur_value = min(blur_value, min(w, h) - 1)
-            # Đảm bảo rằng blur_value luôn là số lẻ và lớn hơn 0
-            blur_value = max(
-                1, blur_value) if blur_value % 2 == 0 else blur_value
-            # Tạo kernel với kích thước mới
+            blur_value = max(1, blur_value) if blur_value % 2 == 0 else blur_value
             kernel = (blur_value, blur_value)
             blurred_roi = cv2.GaussianBlur(roi_copy, kernel, 0)
-
-            # Gán vùng đã mờ trở lại ảnh gốc
             blurred_image[y:y+h, x:x+w] = blurred_roi
-
-            # Hiển thị ảnh đã mờ
             cv2.imshow('Blurred Image', blurred_image)
-# Hàm áp dụng filter2D với kernel được chọn dựa trên giá trị từ thanh trượt
+
 
 
 def apply_filter():
