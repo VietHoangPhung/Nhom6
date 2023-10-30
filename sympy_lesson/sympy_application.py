@@ -36,14 +36,17 @@ def solve():
         else:
             x = sym.symbols('x')
             if (is_f_greater_than_zero(f_expr, lower_limit, upper_limit)):
-                # Tính diện tích sử dụng phương pháp tích phân
-                area = sym.integrate(eval(f_expr), (x, lower_limit, upper_limit))
-                lb4 = tk.Label(window, text="Diện tích hình phẳng là: " + str(area))
-                lb4.grid(row=4, column=1)
-            else:
-                area = -sym.integrate(eval(f_expr), (x, lower_limit, upper_limit))
-                lb4 = tk.Label(window, text="Diện tích hình phẳng là: " + str(area))
-                lb4.grid(row=4, column=1)
+        # Tính diện tích sử dụng phương pháp tích phân
+                 area = sym.integrate(eval(f_expr), (x, lower_limit, upper_limit))
+                 lb4 = tk.Label(window, text="Diện tích hình phẳng là: " + str(area))
+                 lb4.grid(row=4, column=1)
+
+        # Add a button to plot the function and the shaded area
+                 plot_button = tk.Button(window, text="Plot Function", command=lambda: plot_function(f_expr, lower_limit, upper_limit, x_label="x", y_label="f(x)"))
+                 plot_button.grid(row=5, column=1)            else:
+                 area = -sym.integrate(eval(f_expr), (x, lower_limit, upper_limit))
+                 lb4 = tk.Label(window, text="Diện tích hình phẳng là: " + str(area))
+                 lb4.grid(row=4, column=1)
 
     except Exception as e:
         messagebox.showerror("Error", str(e))
