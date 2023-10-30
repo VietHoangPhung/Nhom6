@@ -69,6 +69,39 @@ def plot_prediction_probabilities(predictions):
     # Get the class labels and probabilities
     labels = class_name[:len(predictions[0])]
     probabilities = predictions[0][:len(class_name)]
+def clear_prediction():
+    image_label.configure(image=None)
+    predicted_class_label.def predict_image():
+    # ... (previous code)
+def predict_image():
+    # ... (previous code)
+
+    # Get the top N predicted classes and their confidences
+    top_n = 5  # Adjust N as needed
+    top_n_indices = np.argpartition(predictions, -top_n)[-top_n:]
+    top_n_indices = top_n_indices[np.argsort(predictions[0, top_n_indices])[::-1]]
+    
+    top_classes = [class_name[i] for i in top_n_indices]
+    top_confidences = [predictions[0, i] for i in top_n_indices]
+
+    # Update the predicted class label on the GUI to show the top N predictions
+    predicted_class_label.configure(text=f"Top {top_n} Predictions:\n")
+    for i in range(top_n):
+        predicted_class_label.configure(text=f"{top_classes[i]} (confidence: {top_confidences[i]:.2f})\n",
+                                        anchor="w")
+
+    try:
+        # Run the inference
+        predictions = model.predict(data)
+        # ... (rest of the code)
+    except Exception as e:
+        predicted_class_label.configure(text=f"Prediction Error: {str(e)}")
+(text="")
+    
+
+# Create a button to clear the previous prediction
+clear_button = tk.Button(root, text="Clear Prediction", command=clear_prediction)
+clear_button.pack(pady=10)
 
     # Plot the probabilities
     plt.figure(figsize=(8, 6))
